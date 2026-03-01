@@ -20,24 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      /// ===== APP BAR =====
-      appBar: AppBar(
-        title: const Text("Todo App"),
-        backgroundColor: Colors.blue,
-      ),
-
-      /// ===== DRAWER MENU =====
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-
-            const UserAccountsDrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              accountName: Text("Hoàng Hải"),
-              accountEmail: Text("hoanghai@gmail.com"),
+      /// ===== APP BAR =====ai@gmail.com"),
               currentAccountPicture: CircleAvatar(
                 backgroundImage:
                 NetworkImage("https://i.pravatar.cc/150?img=3"),
