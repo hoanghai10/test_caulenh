@@ -1,21 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
-    );
-  }
-}
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -35,12 +19,63 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      /// ===== APP BAR =====
+      appBar: AppBar(
+        title: const Text("Todo App"),
+        backgroundColor: Colors.blue,
+      ),
+
+      /// ===== DRAWER MENU =====
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+
+            const UserAccountsDrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              accountName: Text("Hoàng Hải"),
+              accountEmail: Text("hoanghai@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage:
+                NetworkImage("https://i.pravatar.cc/150?img=3"),
+              ),
+            ),
+
+            ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text("Trang chủ"),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+
+            ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text("Thông tin cá nhân"),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text("Cài đặt"),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
+
+      /// ===== BODY =====
       body: Column(
         children: [
 
-          /// =======================
-          /// NỬA TRÊN (Avatar giữ nguyên)
-          /// =======================
+          /// NỬA TRÊN (Avatar)
           Expanded(
             flex: 1,
             child: Container(
@@ -87,9 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
 
-          /// =======================
           /// NỬA DƯỚI – TODO LIST
-          /// =======================
           Expanded(
             flex: 1,
             child: Container(
@@ -123,10 +156,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         return Container(
                           margin: const EdgeInsets.only(bottom: 10),
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 10),
                           decoration: BoxDecoration(
                             color: Colors.grey.shade100,
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius:
+                            BorderRadius.circular(12),
                           ),
                           child: CheckboxListTile(
                             value: item["done"],
